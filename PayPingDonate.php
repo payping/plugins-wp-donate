@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: افزونه حمایت مالی پی‌پینگ برای وردپرس
-Version: 1.1
+Version: 1.2
 Description: افزونه حمایت مالی از وبسایت ها -- برای استفاده تنها کافی است کد زیر را درون بخشی از برگه یا نوشته خود قرار دهید  [PayPingDonate]
 Plugin URI: https://www.payping.ir/
 Author: Erfan Ebrahimi
