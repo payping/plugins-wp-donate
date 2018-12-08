@@ -214,6 +214,7 @@ function PayPingDonateForm() {
 						$response = json_decode($response, true);
 						if (isset($_GET["refid"]) and $_GET["refid"] != '') {
 							payPingDonate_ChangeStatus($id, 'OK');
+							payPingDonate_SetAuthority($id, $refid);
 							$message .= get_option( 'payPingDonate_IsOk') . "<br>\r\n";
 							$message .= 'کد پیگیری تراکنش:'. $refid . "<br>\r\n";
 							$payPingDonate_TotalAmount = get_option("payPingDonate_TotalAmount");
