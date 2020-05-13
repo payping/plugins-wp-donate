@@ -18,7 +18,7 @@ if ( is_admin() )
 	add_action('admin_menu', 'payPingDonate_AdminMenuItem');
 	function payPingDonate_AdminMenuItem()
 	{
-		add_menu_page( 'تنظیمات افزونه حمایت مالی - پی‌پینگ', 'حمات مالی', 'administrator', 'payPingDonate_MenuItem', 'payPingDonate_MainPageHTML', '', 6 );
+		add_menu_page( 'تنظیمات افزونه حمایت مالی - پی‌پینگ', 'حمایت مالی', 'administrator', 'payPingDonate_MenuItem', 'payPingDonate_MainPageHTML', 'dashicons-plus-alt' );
 		add_submenu_page('payPingDonate_MenuItem','نمایش حامیان مالی','نمایش حامیان مالی', 'administrator','payPingDonate_Hamian','payPingDonate_HamianHTML');
 	}
 }
