@@ -10,8 +10,16 @@ Author URI: http://erfanebrahimi.ir/
 
 defined('ABSPATH') or die('Access denied!');
 define ('TABLE_DONATE'  , 'payping_donate');
-
+define('PPDonationDIR', plugin_dir_path( __FILE__ ));
+define('PPDonationDU', plugin_dir_url( __FILE__ ));
 require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+// Enqueue your script
+function enqueue_my_script() {
+    wp_enqueue_script( 'donate-ajax', PPDonationDU . 'assets/js/script.js', array('jquery'), null, true );
+}
+add_action('wp_enqueue_scripts', 'enqueue_my_script');
+
 
 if ( is_admin() )
 {
@@ -66,9 +74,12 @@ function PayPingDonateForm() {
 			$error = 'کد دروازه پرداخت وارد نشده است' . "<br>\r\n";
 		}
 
-
+		function convertPrice($price) {
+			$price = str_replace(',', '', $price);
+			return $price;
+		}
 		$Amount = filter_input(INPUT_POST, 'payPingDonate_Amount', FILTER_SANITIZE_SPECIAL_CHARS);
-
+		$Amount = convertPrice($Amount);
 		if(is_numeric($Amount) != false)
 		{
 			//Amount will be based on Toman  - Required
@@ -287,7 +298,7 @@ function PayPingDonateForm() {
               <div class="payPingDonate_FormItem">
                 <label class="payPingDonate_FormLabel">مبلغ :</label>
                 <div class="payPingDonate_ItemInput">
-                  <input style="width:60%" type="text" name="payPingDonate_Amount" value="'. $Amount .'" />
+                  <input id="payPingDonate_Amount" style="width:60%" type="text" name="payPingDonate_Amount" value="'. $Amount .'" />
                   <span style="margin-right:10px;">'. $payPingDonate_Unit .'</span>
                 </div>
               </div>
